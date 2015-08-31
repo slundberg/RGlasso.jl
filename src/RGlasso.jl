@@ -10,7 +10,7 @@ function glasso(S::Matrix, rho::Float64)
             "S = as.matrix(read.table('/tmp/RGlasso_tmp_matrix.txt', header=FALSE));" *
             "out = glasso(S, $rho);" *
             "write.table(out\$wi, '/tmp/RGlasso_tmp_matrix.txt', row.names=FALSE, col.names=FALSE)"
-    run(`R -q -e $rcode`)
+    run(pipe(`R -q -e $rcode`, stdout=DevNull))
 
     w = readdlm("/tmp/RGlasso_tmp_matrix.txt")
     rm("/tmp/RGlasso_tmp_matrix.txt")
