@@ -2,7 +2,7 @@ module RGlasso
 
 export glasso
 
-function glasso(S::Matrix, rho::Float64, rcmd="R")
+function glasso(S::Matrix, rho::Float64; rcmd="R")
     writedlm("/tmp/RGlasso_tmp_matrix.txt", S)
 
     # start R and tell it to run glasso with a given rho value
